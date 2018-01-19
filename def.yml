@@ -8,8 +8,6 @@ info:
 paths:
   /api/lead:
     get:
-    summary: receive parameters
-    description: Returns the list of fields required and it's properties, required to create Lead
       responses:
         '200':
           content:
