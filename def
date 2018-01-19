@@ -1,0 +1,12 @@
+---
+openapi: 3.0.0
+info:
+  title: Leads
+  version: 1.0.0
+paths:
+  /api/lead:
+    get:
+      responses:
+        '200':
+          content:
+            application/json: {}
