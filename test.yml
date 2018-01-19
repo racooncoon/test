@@ -2,16 +2,15 @@
 openapi: 3.0.0
 info:
   title: Leads
-  description: Sample Leads description
   version: 1.0.0
 servers:
-  - url: https://crm.uteclab.com  
-  paths:
-    /api/lead:
-      get:
-        summary: receive parameters
-        description: Returns the list of fields required and it's properties, required to create Lead
-        responses:
-          '200':
-            content:
-              application/json: {}
+  url: https://crm.uteclab.com
+paths:
+  /api/lead:
+    get:
+    summary: receive parameters
+    description: Returns the list of fields required and it's properties, required to create Lead
+      responses:
+        '200':
+          content:
+            application/json: {}
