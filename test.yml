@@ -34,6 +34,31 @@ paths:
           in: body
           description: Lead's first name.
           required: true
+        - name: last_name
+          in: body
+          description: Lead's surname.
+          required: true
+        - name: country
+          in: body
+          description: Lead's first name.
+          required: true
+        - name: address
+          in: body
+          description: Lead's address.
+          required: true
+        - name: email
+          in: body
+          description: Lead's email.
+          required: true
+        - name: promo_code
+          in: body
+          description: Promo-code.
+          required: false
+        - name: token
+          in: body
+          description: Lead Source token.
+          required: false
+          
   /api/v2/lead 
     post:
       summary: create Lead
