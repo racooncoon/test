@@ -22,65 +22,65 @@ paths:
         Creates Lead in CRM system.
       parameters:
         - name: phone_number
-          in: body
+          in: query
           type: string
           description: Lead's phone number.
           required: true
-          options:
-            default: '123124543545623234'
+          #options:
+          #  default: '123124543545623234'
         - name: language
-          in: body
+          in: query
           type: string
           description: Lead's language.
           required: true 
-          options:
-            default: 'English'
+          #options:
+          #  default: 'English'
         - name: first_name
-          in: body
+          in: query
           type: string
           description: Lead's first name.
           required: true
-          options:
-            default: 'Gabriel'
+          #options:
+          #  default: 'Gabriel'
         - name: last_name
-          in: body
+          in: query
           type: string
           description: Lead's surname.
           required: true
           options:
             default: 'Smith'
         - name: country
-          in: body
+          in: query
           type: string
           description: Lead's country.
           required: true
-          options:
-            default: 'Russia'
+          #options:
+          #  default: 'Russia'
         - name: address
-          in: body
+          in: query
           description: Lead's address.
           required: true
-          options:
-            default: 'far-far away'
+          #options:
+          #  default: 'far-far away'
         - name: email
-          in: body
+          in: query
           type: string
           description: Lead's email.
           required: true
-          options:
-            default: 'egzampil11@example.com'
+          #options:
+          #  default: 'egzampil11@example.com'
         - name: promo_code
           in: query
           type: string
           description: Promo-code.
           required: false
         - name: token
-          in: body
+          in: query
           type: string
           description: Lead Source's token.
           required: false
-          options:
-            default: 'rxhOGnShCv1aHlerl4NYANX3dJ-QuwTt'
+          #options:
+          #  default: 'rxhOGnShCv1aHlerl4NYANX3dJ-QuwTt'
         - name: referer
           in: query
           type: string
