@@ -28,63 +28,63 @@ paths:
           required: true
           default: '123124543545623234'
         - name: language
-          in: query
+          in: body
           type: string
           description: Lead's language.
           required: true
           default: 'English'
         - name: first_name
-          in: query
+          in: body
           type: string
           description: Lead's first name.
           required: true
           default: 'Gabriel'
         - name: last_name
-          in: query
+          in: body
           type: string
           description: Lead's surname.
           required: true
           default: 'Smith'
         - name: country
-          in: query
+          in: body
           type: string
           description: Lead's country.
           required: true
           default: 'Russia'
         - name: address
-          in: query
+          in: body
           description: Lead's address.
           required: true
           default: 'far-far away'
         - name: email
-          in: query
+          in: body
           type: string
           description: Lead's email.
           required: true
           default: 'egzampil11@example.com'
         - name: promo_code
-          in: query
+          in: body
           type: string
           description: Promo-code.
           required: false
         - name: token
-          in: query
+          in: body
           type: string
           description: Lead Source's token.
           required: false
           default: 'rxhOGnShCv1aHlerl4NYANX3dJ-QuwTt'
         - name: referer
-          in: query
+          in: body
           type: string
           description: Lead Source's name in readable format.
           required: false
         - name: comment
-          in: query
+          in: body
           type: string
           description: Comment to a lead's profile.
           required: false
         - name: autofix_phone
-          in: query
+          in: body
           type: bool
           description: Use/Not use advanced validation of phone number.
           required: false
