@@ -45,6 +45,10 @@ components:
         - email
       optional:
         - promo-code
+        - token
+        - referer
+        - comment
+        - autofix_phone
       properties:
         phone_number:
           type: string
@@ -58,7 +62,16 @@ components:
           type: string
         address:
           type: string
-        promo-code:
-          type: string
         email:
           type: string
+        promo-code:
+          type: string
+        token:
+          type: string
+        referer:
+          type: string
+        comment:
+          type: string
+        autofix_phone:
+          type: boolean
+          
