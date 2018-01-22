@@ -19,7 +19,7 @@ paths:
     post:
       summary: create Lead
       description: |
-        Creates Lead in CRM system. 
+        Creates Lead in CRM system.
       parameters:
         - name: phone_number
           in: body
