@@ -80,6 +80,15 @@ paths:
           type: bool
           description: Use/Not use advanced validation of phone number.
           required: false
+      responses:
+        "200":
+          description: pet response
+          schema:
+            $ref: '#/definitions/Lead'
+        default:
+          description: error
+          schema:
+            $ref: '#/definitions/Error'
   /api/v2/lead:
     post:
       summary: create Lead
@@ -145,3 +154,33 @@ paths:
           type: bool
           description: Use/Not use advanced validation of phone number.
           required: false
+definitions:
+  Lead:
+    allOf:
+      - $ref: '#/definitions/NewLead'
+      - required:
+        - id
+        properties:
+          id:
+            type: integer
+            format: int64
+
+  NewLead:
+    required:
+      - name  
+    properties:
+      name:
+        type: string
+      tag:
+        type: string    
+
+  Error:
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
