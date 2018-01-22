@@ -27,56 +27,56 @@ paths:
           description: Lead's phone number.
           required: true
         - name: language
-          in: body
+          in: query
           type: string
           description: Lead's language.
           required: true 
         - name: first_name
-          in: body
+          in: query
           type: string
           description: Lead's first name.
           required: true
         - name: last_name
-          in: body
+          in: query
           type: string
           description: Lead's surname.
           required: true
         - name: country
-          in: body
+          in: query
           type: string
           description: Lead's first name.
           required: true
         - name: address
-          in: body
+          in: query
           description: Lead's address.
           required: true
         - name: email
-          in: body
+          in: query
           type: string
           description: Lead's email.
           required: true
         - name: promo_code
-          in: body
+          in: query
           type: string
           description: Promo-code.
           required: false
         - name: token
-          in: body
+          in: query
           type: string
           description: Lead Source's token.
           required: false
         - name: referer
-          in: body
+          in: query
           type: string
           description: Lead Source's name in readable format.
           required: false
         - name: comment
-          in: body
+          in: query
           type: string
           description: Comment to a lead's profile.
           required: false
         - name: autofix_phone
-          in: body
+          in: query
           type: bool
           description: Use/Not use advanced validation of phone number.
           required: false
@@ -96,61 +96,61 @@ paths:
         Creates Lead in CRM system. 
       parameters:
         - name: phone_number
-          in: body
+          in: query
           type: string
           description: Lead's phone number.
           required: true
         - name: language
-          in: body
+          in: query
           type: string
           description: Lead's language.
           required: true 
         - name: first_name
-          in: body
+          in: query
           type: string
           description: Lead's first name.
           required: true
         - name: last_name
-          in: body
+          in: query
           type: string
           description: Lead's surname.
           required: true
         - name: country
-          in: body
+          in: query
           type: string
           description: Lead's first name.
           required: true
         - name: address
-          in: body
+          in: query
           description: Lead's address.
           required: true
         - name: email
-          in: body
+          in: query
           type: string
           description: Lead's email.
           required: true
         - name: promo_code
-          in: body
+          in: query
           type: string
           description: Promo-code.
           required: false
         - name: token
-          in: body
+          in: query
           type: string
           description: Lead Source's token.
           required: false
         - name: referer
-          in: body
+          in: query
           type: string
           description: Lead Source's name in readable format.
           required: false
         - name: comment
-          in: body
+          in: query
           type: string
           description: Comment to a lead's profile.
           required: false
         - name: autofix_phone
-          in: body
+          in: query
           type: bool
           description: Use/Not use advanced validation of phone number.
           required: false
