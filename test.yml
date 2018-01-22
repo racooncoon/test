@@ -58,6 +58,10 @@ paths:
           in: body
           description: Lead Source token.
           required: false
+      responses:
+        '200':
+          content:
+            application/json: {}
   /api/v2/lead:
     post:
       summary: create Lead
