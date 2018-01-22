@@ -19,10 +19,10 @@ paths:
             application/json: {}
   /api/v2/lead:
     post:
-      description: Creates a new pet in the store.  Duplicates are allowed
-      operationId: addPet
+      description: Creates a Lead in CRM.
+      operationId: addLead
       requestBody:
-        description: Pet to add to the store
+        description: Lead to create
         required: true
         content:
           application/x-www-form-urlencoded:
