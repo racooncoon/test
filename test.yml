@@ -94,7 +94,7 @@ paths:
           schema:
             $ref: '#/definitions/Lead'
         "400":
-          description: Bad req
+          description: Bad request
           schema:
             $ref: '#/definitions/Error'
         default:
