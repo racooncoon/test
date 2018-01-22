@@ -58,7 +58,7 @@ paths:
           in: body
           description: Lead Source token.
           required: false
-#  /api/v2/lead:
+  /api/v2/lead:
     post:
       summary: create Lead
       description: |
