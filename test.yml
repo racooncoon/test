@@ -36,9 +36,25 @@ components:
   schemas:
     NewLead:
       required:
-        - phone_number  
+        - phone_number
+        - language
+        - first_name
+        - last_name
+        - country
+        - address
+        - email
       properties:
-        phone_number:
+        - phone_number:
           type: string
-          
-        
+        - language
+          type: string
+        - first_name
+          type: string
+        - last_name
+          type: string
+        - country
+          type: string
+        - address
+          type: string
+        - email
+          type: string
