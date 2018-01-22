@@ -6,69 +6,69 @@ info:
 servers:
   - url: https://crm.uteclab.com
 paths:
-  - /api/lead:
-      get:
-        summary: receive parameters
-        description: |
-          Returns the list of parameters and it's properties, required to create Lead.
-          Request sends to CRM system URL followed by /api/lead.
-       responses:
-          '200':
-            content:
-              application/json: {}
-      post:
-        summary: create Lead
-        description: |
-          Creates Lead in CRM system. 
-        parameters:
-         - name: phone_number
-           in: body
-            type: string
-            description: Lead's phone number.
-            required: true
-         - name: language
-            in: body
-            description: Lead's language.
-            required: true 
-          - name: first_name
-            in: body
-            description: Lead's first name.
-            required: true
-          - name: last_name
-            in: body
-            description: Lead's surname.
-            required: true
-          - name: country
-            in: body
-            description: Lead's first name.
-            required: true
-          - name: address
-            in: body
-            description: Lead's address.
-            required: true
-          - name: email
-            in: body
-            description: Lead's email.
-            required: true
-          - name: promo_code
-            in: body
-            description: Promo-code.
-            required: false
-         - name: token
-            in: body
-            description: Lead Source token.
-            required: false
-  - /api/v2/lead 
-      post:
-        summary: create Lead
-        description: |
-          Creates Lead in CRM system. 
-        parameters:
-          - name: phone_number
-            in: body
-            description: Lead's phone number.
-            required: true
-          - name: language
-            in: body
-            description: Lead's language.
-            required: true
+  /api/lead:
+    get:
+      summary: receive parameters
+      description: |
+        Returns the list of parameters and it's properties, required to create Lead.
+        Request sends to CRM system URL followed by /api/lead.
+      responses:
+        '200':
+          content:
+            application/json: {}
+    post:
+      summary: create Lead
+      description: |
+        Creates Lead in CRM system. 
+      parameters:
+        - name: phone_number
+          in: body
+          type: string
+          description: Lead's phone number.
+          required: true
+        - name: language
+          in: body
+          description: Lead's language.
+          required: true 
+        - name: first_name
+          in: body
+          description: Lead's first name.
+          required: true
+        - name: last_name
+          in: body
+          description: Lead's surname.
+          required: true
+        - name: country
+          in: body
+          description: Lead's first name.
+          required: true
+        - name: address
+          in: body
+          description: Lead's address.
+          required: true
+        - name: email
+          in: body
+          description: Lead's email.
+          required: true
+        - name: promo_code
+          in: body
+          description: Promo-code.
+          required: false
+       - name: token
+          in: body
+          description: Lead Source token.
+          required: false
+  /api/v2/lead 
+    post:
+      summary: create Lead
+      description: |
+        Creates Lead in CRM system. 
+      parameters:
+        - name: phone_number
+          in: body
+          description: Lead's phone number.
+          required: true
+        - name: language
+          in: body
+          description: Lead's language.
+          required: true
