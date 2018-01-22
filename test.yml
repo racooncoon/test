@@ -26,8 +26,7 @@ paths:
           type: string
           description: Lead's phone number.
           required: true
-          options:
-            default: '123124543545623234'
+          default: '123124543545623234'
         - name: language
           in: query
           type: string
