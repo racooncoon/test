@@ -52,6 +52,7 @@ components:
       properties:
         phone_number:
           type: string
+          format: base64
         language:
           type: string
         first_name:
