@@ -22,7 +22,7 @@ paths:
         Creates Lead in CRM system. 
       parameters:
         - name: phone_number
-          in: body
+          in: query
           type: string
           description: Lead's phone number.
           required: true
