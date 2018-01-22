@@ -46,15 +46,15 @@ components:
       properties:
         - phone_number:
           type: string
-        - language
+        - language:
           type: string
-        - first_name
+        - first_name:
           type: string
-        - last_name
+        - last_name:
           type: string
-        - country
+        - country:
           type: string
-        - address
+        - address:
           type: string
-        - email
+        - email:
           type: string
