@@ -34,17 +34,17 @@ paths:
           in: body
           description: Lead's first name.
           required: true
-  #/api/v2/lead 
-  #  post:
-  #    summary: create Lead
-  #    description: |
-  #      Creates Lead in CRM system. 
-  #    parameters:
-  #      - name: phone_number
-  #        in: body
-  #        description: Lead's phone number.
-  #        required: true
-  #      - name: language
-  #        in: body
-  #        description: Lead's language.
-  #        required: true
+  /api/v2/lead 
+    post:
+      summary: create Lead
+      description: |
+        Creates Lead in CRM system. 
+      parameters:
+        - name: phone_number
+          in: body
+          description: Lead's phone number.
+          required: true
+        - name: language
+          in: body
+          description: Lead's language.
+          required: true
