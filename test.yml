@@ -9,7 +9,7 @@ paths:
   /api/lead:
     get:
       summary: receive parameters
-      description: Terurns the list of parameters and it's properties, required to create Lead.
+      description: Returns the list of parameters and it's properties, required to create Lead.
       responses:
         '200':
           content:
