@@ -43,6 +43,8 @@ components:
         - country
         - address
         - email
+      optional:
+        - promo-code
       properties:
         phone_number:
           type: string
@@ -55,6 +57,8 @@ components:
         country:
           type: string
         address:
+          type: string
+        promo-code:
           type: string
         email:
           type: string
