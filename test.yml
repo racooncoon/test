@@ -27,48 +27,48 @@ paths:
           description: Lead's phone number.
           required: true
           options:
-            default: 123124543545623234
+            default: '123124543545623234'
         - name: language
           in: body
           type: string
           description: Lead's language.
           required: true 
           options:
-            default: English
+            default: 'English'
         - name: first_name
           in: body
           type: string
           description: Lead's first name.
           required: true
           options:
-            default: Gabriel
+            default: 'Gabriel'
         - name: last_name
           in: body
           type: string
           description: Lead's surname.
           required: true
           options:
-            default: Smith
+            default: 'Smith'
         - name: country
           in: body
           type: string
           description: Lead's country.
           required: true
           options:
-            default: Russia
+            default: 'Russia'
         - name: address
           in: body
           description: Lead's address.
           required: true
           options:
-            default: far-far away
+            default: 'far-far away'
         - name: email
           in: body
           type: string
           description: Lead's email.
           required: true
           options:
-            default: egzampil11@example.com
+            default: 'egzampil11@example.com'
         - name: promo_code
           in: query
           type: string
@@ -80,7 +80,7 @@ paths:
           description: Lead Source's token.
           required: false
           options:
-            default: rxhOGnShCv1aHlerl4NYANX3dJ-QuwTt
+            default: 'rxhOGnShCv1aHlerl4NYANX3dJ-QuwTt'
         - name: referer
           in: query
           type: string
