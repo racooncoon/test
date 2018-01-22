@@ -28,8 +28,7 @@ paths:
         - name: language
           in: body
           description: Lead's language.
-          required: true
-        
+          required: true       
   /api/v2/lead 
     post:
       summary: create Lead
