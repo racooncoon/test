@@ -44,7 +44,7 @@ paths:
         - name: country
           in: query
           type: string
-          description: Lead's first name.
+          description: Lead's country.
           required: true
         - name: address
           in: query
