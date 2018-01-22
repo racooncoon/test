@@ -10,7 +10,7 @@ paths:
     get:
       summary: receive parameters
       description: |
-        Returns the list of parameters and it's properties, required to create Lead. |
+        Returns the list of parameters and it's properties, required to create Lead.
         Request sends to CRM system URL followed by /api/lead.
       responses:
         '200':
