@@ -32,42 +32,36 @@ paths:
           type: string
           description: Lead's language.
           required: true
-          #options:
-          #  default: 'English'
+          default: 'English'
         - name: first_name
           in: query
           type: string
           description: Lead's first name.
           required: true
-          #options:
-          #  default: 'Gabriel'
+          default: 'Gabriel'
         - name: last_name
           in: query
           type: string
           description: Lead's surname.
           required: true
-          options:
-            default: 'Smith'
+          default: 'Smith'
         - name: country
           in: query
           type: string
           description: Lead's country.
           required: true
-          #options:
-          #  default: 'Russia'
+          default: 'Russia'
         - name: address
           in: query
           description: Lead's address.
           required: true
-          #options:
-          #  default: 'far-far away'
+          default: 'far-far away'
         - name: email
           in: query
           type: string
           description: Lead's email.
           required: true
-          #options:
-          #  default: 'egzampil11@example.com'
+          default: 'egzampil11@example.com'
         - name: promo_code
           in: query
           type: string
@@ -78,8 +72,7 @@ paths:
           type: string
           description: Lead Source's token.
           required: false
-          #options:
-          #  default: 'rxhOGnShCv1aHlerl4NYANX3dJ-QuwTt'
+          default: 'rxhOGnShCv1aHlerl4NYANX3dJ-QuwTt'
         - name: referer
           in: query
           type: string
