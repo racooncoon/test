@@ -1,0 +1,71 @@
+openapi: 3.0.0
+info:
+  title: AffiliaTS
+  version: 1.0.0
+servers:
+  - url: 'https://dev02.bo.avrath.net:8888'
+paths:
+  /api/affiliatets/transactions:
+    get:
+      summary: deposits and withdrawals.
+      description: Returns information about deposits and withdrawals
+      parameters:
+        - name: from
+          in: path
+          description: lower limit of data set
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: path
+          description: upper limit of data set
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: rows
+          in: path
+          description: number of rows
+          required: true
+          schema:
+            type: integer
+        - name: page
+          in: path
+          description: number of page
+          required: true
+          schema:
+            type: integer
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Correct response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionsResponse'
+components:
+  schemas:
+    TransactionsResponse:
+      properties:
+        rdate:
+          type: string
+        traderID:
+          type: integer
+        tranzID:
+          type: integer
+        type:
+          type: string
+        amount:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
+        crmLeadId:
+          type: integer
+          
