@@ -49,6 +49,8 @@ paths:
                   message:
                     type: string
                     description: |
+                      Contains result message:
+                      
                       "OK" 
                       - Lead was created.
 
@@ -112,13 +114,15 @@ paths:
                     - Token is invalid
                   leadId:
                     type: string
+                    description: Identificator of Lead in CRM
                   autoLoginLink:
                     type: string
+                    description: Link for automatic login
                 example:
                   message:
                     Message: OK
                   leadId: 37769
-                  autoLoginLink: https://dev02.bo.avrath.net/Account/TokenLogin?code=3fda080ae93840f68aa4055e3fc7a8ac434da51d64e0458390394766c1855235
+                  autoLoginLink: https://dev02.bo.avrath.net/Account/TokenLogin?code=3fda080ae93840f68aa4055e3fc7b8ac434da51d64e0458390394766c1855235
   /api/check-email:
     post:
       summary: Check the availability of email.
@@ -134,7 +138,8 @@ paths:
               $ref: '#/components/schemas/CheckEmailRequest'
       responses:
         '200':
-          description: Correct response
+          description: |
+            Correct response. "True" - Email is already taken. "False" - Email is available. 
           content:
             "*/*": {}
   /api/check-phone:
@@ -153,7 +158,8 @@ paths:
               $ref: '#/components/schemas/CheckPhoneRequest'
       responses:
         '200':
-          description: Correct response
+          description: |
+            Correct response. "True" - Phone number is already taken. "False" - Phone number is available. 
           content:
             application/json:
               schema:
@@ -176,12 +182,14 @@ components:
             type: string
         language:
           type: string
+          description: List of allowed values
         first_name:
           type: array
           items:
             type: string
         country:
           type: string
+          description: List of allowed values.
         promo_code:
           type: string
         last_name:
