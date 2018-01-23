@@ -15,7 +15,7 @@ paths:
         Request sends to CRM system URL followed by /api/lead.
       responses:
         '200':
-          description: correct response
+          description: Correcr request
           content:
             application/x-www-form-urlencoded:
               schema:
@@ -28,7 +28,7 @@ paths:
       description: Creates a Lead in CRM.
       operationId: addLead
       requestBody:
-        description: Lead to create
+        description: Lead info
         required: true
         content:
           application/x-www-form-urlencoded:
@@ -39,7 +39,7 @@ paths:
               $ref: '#/components/schemas/NewLead'
       responses:
         '200':
-          description: Lead created
+          description: Correcr request
           content:
             application/json:
               schema:
@@ -71,7 +71,7 @@ paths:
               $ref: '#/components/schemas/CheckEmailRequest'
       responses:
         '200':
-          description: response
+          description: Correcr request
           content:
             "*/*": {}
   /api/check-phone:
@@ -87,7 +87,7 @@ paths:
               $ref: '#/components/schemas/CheckPhoneRequest'
       responses:
         '200':
-          description: response
+          description: Correcr request
           content:
             application/json:
               schema:
@@ -172,4 +172,3 @@ components:
         country: United States
         address: Main st.1
         email: johnsmith@example.com
-  
