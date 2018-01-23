@@ -17,7 +17,12 @@ paths:
         '200':
           description: correct response
           content:
-            application/json: {}
+            application/x-www-form-urlencoded:
+              schema:
+                $ref: '#/components/schemas/AllowedParameters'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllowedParameters'
   /api/v2/lead:
     post:
       description: Creates a Lead in CRM.
@@ -29,13 +34,102 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/NewLead'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewLead'
       responses:
         '200':
           description: Lead created
           content:
-            application/json: {}
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    enum: 
+                      - open
+                      - merged
+                      - declined
+                  leadId:
+                    type: string
+                  autoLoginLink:
+                    type: string
+                example:
+                  message:
+                    Message: Phone already in use
+                  leadId: null
+                  autoLoginLink: null
+  /api/check-email:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckEmailRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CheckEmailRequest'
+      responses:
+        '200':
+          description: response
+          content:
+            "*/*": {}
+  /api/check-phone:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckPhoneRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CheckPhoneRequest'
+      responses:
+        '200':
+          description: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckResponse'
 components:
   schemas:
+    CheckEmailRequest:
+      properties:
+        email:
+          type: string
+    CheckPhoneRequest:
+      properties:
+        phone_number:
+          type: string
+    AllowedParameters:
+      properties:
+        phone_number:
+          type: array
+          items:
+            type: string
+        language:
+          type: string
+        first_name:
+          type: array
+          items:
+            type: string
+        country:
+          type: string
+        promo_code:
+          type: string
+        last_name:
+          type: string
+        address:
+          type: string
+        email:
+          type: string
+        token:
+          type: string
+    CheckResponse:
+      properties:
+        exist:
+          type: boolean
     NewLead:
       required:
         - phone_number
@@ -48,7 +142,6 @@ components:
       properties:
         phone_number:
           type: string
-          format: base64
         language:
           type: string
         first_name:
@@ -79,4 +172,4 @@ components:
         country: United States
         address: Main st.1
         email: johnsmith@example.com
-        
+  
