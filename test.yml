@@ -15,7 +15,7 @@ paths:
         Request sends to CRM system URL followed by /api/lead.
       responses:
         '200':
-          description: Correct responce
+          description: Correct response
           content:
             application/x-www-form-urlencoded:
               schema:
@@ -41,13 +41,75 @@ paths:
               $ref: '#/components/schemas/NewLead'
       responses:
         '200':
-          description: Correct responce
+          description: Correct response
           content:
             application/json:
               schema:
                 properties:
                   message:
                     type: string
+                    description: |
+                      "OK" 
+                      - Lead was created.
+
+                      "Missing fields: " + list of missing fields 
+                      - Some of parameters are missing.
+                      
+                      "Request body must contain UFT-8 characters only" 
+                      - Incorrect request format.
+                      
+                      "Error type: " + 
+                        "The string supplied was too long to parse" or
+                        "The phone number supplied was null" or
+                        "The string supplied did not seem to be a phone number" or
+                        "Could not interpret numbers after plus-sign" or
+                        "The string supplied is too short to be a phone number" or
+                        "The string supplied is too long to be a phone number" or
+                        "Phone number had an IDD, but after this was not long enough 
+                         to be a viable phone number" or
+                        "Country calling code supplied was not recognized" 
+                        - Phone validation failed (only when autofix_phone = true)
+                      
+                      "Phone Number cannot be blank" or
+                      "Email cannot be blank" or
+                      "Language cannot be blank" or
+                      "Country cannot be blank" or
+                      "First name cannot be blank"
+                      - Required parameter is null.
+                      
+                      "Broker not set" 
+                      - CRM system is not initialized.
+                      
+                      "Integration disabled" 
+                      - Integration is disabled for the Lead Source.
+                      
+                      "Incorrect source"
+                      - Lead Source is deleted.
+                      
+                      "Token is invalid"
+                      - Invalid token.
+                    enum:
+                    - OK.
+                    - Missing fields + list of missing fields
+                    - Request body must contain UFT-8 characters only
+                    - The string supplied was too long to parse
+                    - The phone number supplied was null
+                    - The string supplied did not seem to be a phone number
+                    - Could not interpret numbers after plus-sign
+                    - The string supplied is too short to be a phone number
+                    - The string supplied is too long to be a phone number
+                    - Phone number had an IDD, but after this was not long enough 
+                      to be a viable phone number
+                    - Country calling code supplied was not recognized
+                    - Email cannot be blank
+                    - Phone Number cannot be blank
+                    - Language cannot be blank
+                    - Country cannot be blank
+                    - First name cannot be blank
+                    - Broker not set
+                    - Integration disabled
+                    - Incorrect source
+                    - Token is invalid
                   leadId:
                     type: string
                   autoLoginLink:
@@ -55,8 +117,8 @@ paths:
                 example:
                   message:
                     Message: OK
-                  leadId: null   ######################
-                  autoLoginLink: null #################
+                  leadId: 37769
+                  autoLoginLink: https://dev02.bo.avrath.net/Account/TokenLogin?code=3fda080ae93840f68aa4055e3fc7a8ac434da51d64e0458390394766c1855235
   /api/check-email:
     post:
       summary: Check the availability of email.
@@ -72,7 +134,7 @@ paths:
               $ref: '#/components/schemas/CheckEmailRequest'
       responses:
         '200':
-          description: Correct responce
+          description: Correct response
           content:
             "*/*": {}
   /api/check-phone:
@@ -91,7 +153,7 @@ paths:
               $ref: '#/components/schemas/CheckPhoneRequest'
       responses:
         '200':
-          description: Correct responce
+          description: Correct response
           content:
             application/json:
               schema:
