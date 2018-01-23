@@ -7,7 +7,7 @@ servers:
 paths:
   /api/lead:
     get:
-      summary: receive parameters
+      summary: Receive parameters.
       description: >
         Returns the list of parameters and it's properties, required to create
         Lead.
@@ -25,7 +25,9 @@ paths:
                 $ref: '#/components/schemas/AllowedParameters'
   /api/v2/lead:
     post:
-      description: Creates a Lead in CRM.
+      summary: Create Lead in CRM.
+      description: > 
+        Allows to create Leads with a POST-request to CRM system URL followed by /api/v2/lead.
       operationId: addLead
       requestBody:
         description: Lead info
@@ -46,21 +48,20 @@ paths:
                 properties:
                   message:
                     type: string
-                    enum: 
-                      - open
-                      - merged
-                      - declined
                   leadId:
                     type: string
                   autoLoginLink:
                     type: string
                 example:
                   message:
-                    Message: Phone already in use
-                  leadId: null
-                  autoLoginLink: null
+                    Message: OK
+                  leadId: null   ######################
+                  autoLoginLink: null #################
   /api/check-email:
     post:
+      summary: Check the availability of email.
+      description: >
+        Sends POST-request to CRM system URL followed by /api/check-email.
       requestBody:
         content:
           application/json:
@@ -76,6 +77,9 @@ paths:
             "*/*": {}
   /api/check-phone:
     post:
+      summary: Check the availability of phone number.
+      description: >
+        Sends POST-request to CRM system URL followed by /api/check-phone.
       requestBody:
         required: true
         content:
