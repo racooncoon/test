@@ -47,25 +47,29 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionsResponse'
-components:
-  schemas:
-    TransactionsResponse:
-      properties:
-        rdate:
-          type: string
-        traderID:
-          type: integer
-        tranzID:
-          type: integer
-        type:
-          type: string
-        amount:
-          type: string
-        currency:
-          type: string
-        status:
-          type: string
-        crmLeadId:
-          type: integer
-          
+                properties:
+                  rdate:
+                    type: string
+                  traderID:
+                    type: integer
+                  tranzID:
+                    type: integer
+                  type:
+                    type: string
+                  amount:
+                    type: string
+                  currency:
+                    type: string
+                  status:
+                    type: string
+                  crmLeadId:
+                    type: integer
+                example:
+                  rdate: 2017-01-01 01:01:01
+                  traderID: 1111111111
+                  tranzID: 1
+                  type: deposits
+                  amount: 1000
+                  currency: USD
+                  status: approval
+                  crmLeadId: 111111
