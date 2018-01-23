@@ -15,6 +15,7 @@ paths:
         Request sends to CRM system URL followed by /api/lead.
       responses:
         '200':
+          description: correct response
           content:
             application/json: {}
   /api/v2/lead:
@@ -30,6 +31,7 @@ paths:
               $ref: '#/components/schemas/NewLead'
       responses:
         '200':
+          description: Lead created
           content:
             application/json: {}
 components:
@@ -43,12 +45,6 @@ components:
         - country
         - address
         - email
-      optional:
-        - promo-code
-        - token
-        - referer
-        - comment
-        - autofix_phone
       properties:
         phone_number:
           type: string
@@ -75,4 +71,12 @@ components:
           type: string
         autofix_phone:
           type: boolean
-          
+      example:
+        phone_number: +11111111111
+        language: English
+        first_name: John
+        last_name: Smith
+        country: United States
+        address: Main st.1
+        email: johnsmith@example.com
+        
