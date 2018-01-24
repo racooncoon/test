@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.1
 info:
   title: Leads
   version: 1.0.0
@@ -7,8 +7,8 @@ servers:
 paths:
   /api/lead:
     get:
-      summary: Receive parameters.
-      description: >
+      summary: Allowed parameters.
+      description: |
         Returns the list of parameters and it's properties, required to create
         Lead.
 
@@ -17,12 +17,81 @@ paths:
         '200':
           description: Correct response
           content:
-            application/x-www-form-urlencoded:
-              schema:
-                $ref: '#/components/schemas/AllowedParameters'
             application/json:
               schema:
-                $ref: '#/components/schemas/AllowedParameters'
+                type: object
+                properties:
+                  phone_number:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      required:
+                        type: string
+                  language:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      required:
+                        type: string
+                      options:
+                        type: array
+                        items:
+                          type: string
+                  first_name:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      required:
+                        type: string
+                  country:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      required:
+                        type: string
+                      options:
+                        type: array
+                        items:
+                          type: string
+                  promo_code:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      required:
+                        type: string
+                  last_name:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      required:
+                        type: string
+                  address:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      required:
+                        type: string
+                  email:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      required:
+                        type: string
+                  token:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      required:
+                        type: string
   /api/v2/lead:
     post:
       summary: Create Lead in CRM.
@@ -33,12 +102,12 @@ paths:
         description: Lead info
         required: true
         content:
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/NewLead'
           application/json:
             schema:
-              $ref: '#/components/schemas/NewLead'
+              $ref: '#/components/schemas/NewLeadRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NewLeadRequest'
       responses:
         '200':
           description: Correct response
@@ -49,75 +118,47 @@ paths:
                   message:
                     type: string
                     description: |
-                      Contains result message:
-                      
-                      "OK" 
-                      - Lead was created.
+                      Result:
 
-                      "Missing fields: " + list of missing fields 
-                      - Some of parameters are missing.
+                      Success, lead was created
+                      - "OK"
+
+                      Request body contains non-UFT-8 characters
+                      - "Request body must contain UFT-8 characters only"
+
+                      Specified token not found
+                      - "Token is invalid"
                       
-                      "Request body must contain UFT-8 characters only" 
-                      - Incorrect request format.
+                      Integration is disabled for the Lead Source.
+                      - "Integration disabled" 
                       
-                      "Error type: " + 
-                        "The string supplied was too long to parse" or
-                        "The phone number supplied was null" or
-                        "The string supplied did not seem to be a phone number" or
-                        "Could not interpret numbers after plus-sign" or
-                        "The string supplied is too short to be a phone number" or
-                        "The string supplied is too long to be a phone number" or
-                        "Phone number had an IDD, but after this was not long enough 
-                         to be a viable phone number" or
-                        "Country calling code supplied was not recognized" 
-                        - Phone validation failed (only when autofix_phone = true)
-                      
-                      "Phone Number cannot be blank" or
-                      "Email cannot be blank" or
-                      "Language cannot be blank" or
-                      "Country cannot be blank" or
-                      "First name cannot be blank"
-                      - Required parameter is null.
-                      
-                      "Broker not set" 
-                      - CRM system is not initialized.
-                      
-                      "Integration disabled" 
-                      - Integration is disabled for the Lead Source.
-                      
-                      "Incorrect source"
-                      - Lead Source is deleted.
-                      
-                      "Token is invalid"
-                      - Invalid token.
-                    enum:
-                    - OK.
-                    - Missing fields + list of missing fields
-                    - Request body must contain UFT-8 characters only
-                    - The string supplied was too long to parse
-                    - The phone number supplied was null
-                    - The string supplied did not seem to be a phone number
-                    - Could not interpret numbers after plus-sign
-                    - The string supplied is too short to be a phone number
-                    - The string supplied is too long to be a phone number
-                    - Phone number had an IDD, but after this was not long enough 
-                      to be a viable phone number
-                    - Country calling code supplied was not recognized
-                    - Email cannot be blank
-                    - Phone Number cannot be blank
-                    - Language cannot be blank
-                    - Country cannot be blank
-                    - First name cannot be blank
-                    - Broker not set
-                    - Integration disabled
-                    - Incorrect source
-                    - Token is invalid
+                      Required field(s) are missing.
+                      - "Missing fields: {missing_field, ...}"
+
+                      Required parameter is null.
+                      - "{null_parameter} cannot be blank"
+
+                      Phone validation errors when autofix_phone = true:
+                      - "Error type: The string supplied was too long to parse"
+                      - "Error type: The phone number supplied was null"
+                      - "Error type: The string supplied did not seem to be a phone number"
+                      - "Error type: Could not interpret numbers after plus-sign"
+                      - "Error type: The string supplied is too short to be a phone number"
+                      - "Error type: The string supplied is too long to be a phone number"
+                      - "Error type: Phone number had an IDD, but after this was not long enough to be a viable phone number"
+                      - "Error type: Country calling code supplied was not recognized"
+
+                      Lead Source containing provided token was deleted
+                      - "Incorrect source"
+
+                      CRM system is not initialized
+                      - "Broker not set"
                   leadId:
                     type: string
                     description: Identificator of Lead in CRM
                   autoLoginLink:
                     type: string
-                    description: Link for automatic login
+                    description: Link for automatic login (i.e. without login/pass)
                 example:
                   message:
                     Message: OK
@@ -126,92 +167,52 @@ paths:
   /api/check-email:
     post:
       summary: Check the availability of email.
-      description: >
-        Sends POST-request to CRM system URL followed by /api/check-email.
+      description: Sends POST-request to CRM system URL followed by /api/check-email.
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CheckEmailRequest'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/CheckEmailRequest'
+              properties:
+                email:
+                  type: string
       responses:
         '200':
-          description: |
-            Correct response. "True" - Email is already taken. "False" - Email is available. 
+          description: Correct response. "True" - Email is already taken. "False" - Email is available. 
           content:
-            "*/*": {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckResponse'
   /api/check-phone:
     post:
       summary: Check the availability of phone number.
-      description: >
-        Sends POST-request to CRM system URL followed by /api/check-phone.
+      description: Sends POST-request to CRM system URL followed by /api/check-phone.
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CheckPhoneRequest'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/CheckPhoneRequest'
+              properties:
+                phone_number:
+                  type: string
       responses:
         '200':
-          description: |
-            Correct response. "True" - Phone number is already taken. "False" - Phone number is available. 
+          description: Correct response. "True" - Phone number is already taken. "False" - Phone number is available. 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckResponse'
 components:
   schemas:
-    CheckEmailRequest:
-      properties:
-        email:
-          type: string
-    CheckPhoneRequest:
-      properties:
-        phone_number:
-          type: string
-    AllowedParameters:
-      properties:
-        phone_number:
-          type: array
-          items:
-            type: string
-        language:
-          type: string
-          description: List of allowed values
-        first_name:
-          type: array
-          items:
-            type: string
-        country:
-          type: string
-          description: List of allowed values.
-        promo_code:
-          type: string
-        last_name:
-          type: string
-        address:
-          type: string
-        email:
-          type: string
-        token:
-          type: string
     CheckResponse:
       properties:
         exist:
           type: boolean
-    NewLead:
+    NewLeadRequest:
       required:
         - phone_number
         - language
         - first_name
-        - last_name
         - country
-        - address
         - email
       properties:
         phone_number:
