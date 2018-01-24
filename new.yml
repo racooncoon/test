@@ -16,24 +16,24 @@ paths:
           required: true
           schema:
             type: string
-            format: date-time
+            format: dateTime
           example: 2017.01.01
         - name: to
-          in: path
+          in: query
           description: end of a period
           required: true
           schema:
             type: string
-            format: date-time
+            format: dateTime
           example: 2017.01.01
         - name: rows
-          in: path
+          in: query
           description: number of rows
           required: true
           schema:
             type: integer
           example: 100
-        - name: page
+        - name: query
           in: path
           description: number of page
           required: true
@@ -97,26 +97,30 @@ paths:
           required: true
           schema:
             type: string
-            format: date-time
+            format: dateTime
+          example: 2017.01.01
         - name: to
-          in: path
+          in: query
           description: end of a period
           required: true
           schema:
             type: string
-            format: date-time
+            format: dateTime
+          example: 2017.01.01
         - name: rows
-          in: path
+          in: query
           description: number of rows
           required: true
           schema:
             type: integer
-        - name: page
+          example: 100
+        - name: query
           in: path
           description: number of page
           required: true
           schema:
             type: integer
+          example: 1
         - name: Authorization
           in: header
           description: authorization token
@@ -178,26 +182,30 @@ paths:
           required: true
           schema:
             type: string
-            format: date-time
+            format: dateTime
+          example: 2017.01.01
         - name: to
-          in: path
+          in: query
           description: end of a period
           required: true
           schema:
             type: string
-            format: date-time
+            format: dateTime
+          example: 2017.01.01
         - name: rows
-          in: path
+          in: query
           description: number of rows
           required: true
           schema:
             type: integer
-        - name: page
+          example: 100
+        - name: query
           in: path
           description: number of page
           required: true
           schema:
             type: integer
+          example: 1
         - name: Authorization
           in: header
           description: authorization token
