@@ -74,7 +74,7 @@ paths:
                     type: integer
                     description: ID of a Lead in CRM system
                 example:
-                  rdate: 2017-01-01 01:01:01
+                  rdate: 2017.01.01 01:01:01
                   traderID: 1111111111
                   tranzID: 1
                   type: deposits
@@ -154,7 +154,7 @@ paths:
                     type: integer
                     description: ID of a Lead in CRM system
                 example:
-                  rdate: 2017-01-01 01:01:01
+                  rdate: 2017.01.01 01:01:01
                   traderID: 1111111111
                   tranzID: 1
                   type: deposits
@@ -209,7 +209,7 @@ paths:
                 properties:
                   action:
                     type: string
-                    description: type of profile # was?
+                    description: type of profile #(always Lead)
                   btag:
                     type: string
                     description: will be provided by Affiliate Tracking Software as query string on the landing pages and site pages
@@ -221,7 +221,7 @@ paths:
                     description: ID of trading account in trading platform
                   status:
                     type: string
-                    description: status of profile (lead/client) # or not
+                    description: if the registration considered as an active (real account) or demo
                   country: 
                     type: string
                     description: Lead's country (ISO code 2 characters)
@@ -245,22 +245,22 @@ paths:
                     description: Partner's goup name in MetaTrader4
                   leadSourceType:
                     type: string
-                    description: token of Lead Source #right?
+                    description: name of Lead Source
                   partnerName:
                     type: string
-                    description: Partner's name in #where?
+                    description: Partner's name in CRM system
                 example:
                   action: lead
                   btag: 14b5cf95-52cb
-                  rdate: 2017-01-01 01:01:01
+                  rdate: 2017.01.01 01:01:01
                   traderID: 1111111111
                   status: lead
                   country: RU
                   leadStatus: hot
                   leadSource: integration
-                  lastLoginDate: 2017-01-01 01:11:01
+                  lastLoginDate: 2017.01.01 01:11:01
                   promoCode: 111
                   crmLeadId: 11111
                   mtmGroupName: xxx-xxx-xxx
-                  leadSourceType: xxxxx
+                  leadSourceType: LeadSource1
                   partnerName: Partner1
