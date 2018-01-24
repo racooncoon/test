@@ -7,19 +7,19 @@ servers:
 paths:
   /api/affiliatets/transactions:
     get:
-      summary: deposits and withdrawals.
-      description: Returns information about deposits and withdrawals
+      summary: Deposits and withdrawals.
+      description: Returns information on deposits and withdrawals transactions.
       parameters:
         - name: from
           in: path
-          description: lower limit of data set
+          description: start of a period
           required: true
           schema:
             type: string
             format: date-time
         - name: to
           in: path
-          description: upper limit of data set
+          description: end of a period
           required: true
           schema:
             type: string
@@ -38,6 +38,7 @@ paths:
             type: integer
         - name: Authorization
           in: header
+          description: authorization token
           required: true
           schema:
             type: string
@@ -50,20 +51,28 @@ paths:
                 properties:
                   rdate:
                     type: string
+                    description: date of transaction
                   traderID:
                     type: integer
+                    description: ID of trading account in trading platform
                   tranzID:
                     type: integer
+                    description: ID of transaction in trading platform
                   type:
                     type: string
+                    description: type of transaction (deposit/withdrawal)
                   amount:
-                    type: string
+                    type: integer
+                    description: amount of transaction
                   currency:
                     type: string
+                    description: currency of transaction
                   status:
                     type: string
+                    description: status of transaction
                   crmLeadId:
                     type: integer
+                    description: ID of a Lead in CRM system
                 example:
                   rdate: 2017-01-01 01:01:01
                   traderID: 1111111111
@@ -73,3 +82,185 @@ paths:
                   currency: USD
                   status: approval
                   crmLeadId: 111111
+  /api/affiliatets/stats:
+    get:
+      summary: Trading transactions.
+      description: Returns information on trading transactions.
+      parameters:
+        - name: from
+          in: path
+          description: start of a period
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: path
+          description: end of a period
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: rows
+          in: path
+          description: number of rows
+          required: true
+          schema:
+            type: integer
+        - name: page
+          in: path
+          description: number of page
+          required: true
+          schema:
+            type: integer
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Correct response
+          content:
+            application/json:
+              schema:
+                properties:
+                  rdate:
+                    type: string
+                    description: date of transaction
+                  traderID:
+                    type: integer
+                    description: ID of trading account in trading platform
+                  tranzID:
+                    type: integer
+                    description: ID of transaction in trading platform
+                  type:
+                    type: string
+                    description: type of transaction (deposit/withdrawal)
+                  amount:
+                    type: integer
+                    description: amount of transaction
+                  currency:
+                    type: string
+                    description: currency of transaction
+                  status:
+                    type: string
+                    description: status of transaction
+                  usdAmount: 
+                    type: integer
+                    description: amount of transaction in USD currency
+                  crmLeadId:
+                    type: integer
+                    description: ID of a Lead in CRM system
+                example:
+                  rdate: 2017-01-01 01:01:01
+                  traderID: 1111111111
+                  tranzID: 1
+                  type: deposits
+                  amount: 1000
+                  currency: USD
+                  status: approval
+                  usdAmount: 1000
+                  crmLeadId: 111111
+  /api/affiliatets/registration:
+    get:
+      summary: Leads registration.
+      description: Returns information on Leads' registration.
+      parameters:
+        - name: from
+          in: path
+          description: start of a period
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: path
+          description: end of a period
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: rows
+          in: path
+          description: number of rows
+          required: true
+          schema:
+            type: integer
+        - name: page
+          in: path
+          description: number of page
+          required: true
+          schema:
+            type: integer
+        - name: Authorization
+          in: header
+          description: authorization token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Correct response
+          content:
+            application/json:
+              schema:
+                properties:
+                  action:
+                    type: string
+                    description: type of profile # was?
+                  btag:
+                    type: string
+                    description: will be provided by Affiliate Tracking Software as query string on the landing pages and site pages
+                  rdate:
+                    type: string
+                    description: date of registration
+                  traderID:
+                    type: integer
+                    description: ID of trading account in trading platform
+                  status:
+                    type: string
+                    description: status of profile (lead/client) # or not
+                  country: 
+                    type: string
+                    description: Lead's country (ISO code 2 characters)
+                  leadStatus:
+                    type: string
+                    description: Lead status
+                  leadSource:
+                    type: string
+                    description: method Lead was created with (integration/manual/import/backoffice)
+                  lastLoginDate:
+                    type: string
+                    description: date of Lead's last login
+                  promoCode:
+                    type: integer
+                    description: promo-code
+                  crmLeadId:
+                    type: integer
+                    description: ID of Lead in CRM system
+                  mtmGroupName: 
+                    type: string
+                    description: Partner's goup name in MetaTrader4
+                  leadSourceType:
+                    type: string
+                    description: token of Lead Source #right?
+                  partnerName:
+                    type: string
+                    description: Partner's name in #where?
+                example:
+                  action: lead
+                  btag: 14b5cf95-52cb
+                  rdate: 2017-01-01 01:01:01
+                  traderID: 1111111111
+                  status: lead
+                  country: RU
+                  leadStatus: hot
+                  leadSource: integration
+                  lastLoginDate: 2017-01-01 01:11:01
+                  promoCode: 111
+                  crmLeadId: 11111
+                  mtmGroupName: xxx-xxx-xxx
+                  leadSourceType: xxxxx
+                  partnerName: Partner1
