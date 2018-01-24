@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.0.1
 info:
-  title: AffiliaTS
+  title: Clients
   version: 1.0.0
 servers:
   - url: 'https://dev02.bo.avrath.net:8888'
@@ -10,42 +10,10 @@ paths:
       summary: Deposits and withdrawals.
       description: Returns information on deposits and withdrawals transactions.
       parameters:
-        - name: from
-          in: query
-          description: start of a period
-          required: true
-          schema:
-            type: string
-            format: dateTime
-          example: "2017-01-01"
-        - name: to
-          in: query
-          description: end of a period
-          required: true
-          schema:
-            type: string
-            format: dateTime
-          example: "2017-01-01"
-        - name: rows
-          in: query
-          description: number of rows
-          required: true
-          schema:
-            type: integer
-          example: 100
-        - name: page
-          in: query
-          description: number of page
-          required: true
-          schema:
-            type: integer
-          example: 1
-        - name: Authorization
-          in: header
-          description: authorization token
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/fromParam'
+        - $ref: '#/components/parameters/toParam'
+        - $ref: '#/components/parameters/rowsParam'
+        - $ref: '#/components/parameters/pageParam'
       responses:
         '200':
           description: Correct response
@@ -91,42 +59,10 @@ paths:
       summary: Trading transactions.
       description: Returns information on trading transactions.
       parameters:
-        - name: from
-          in: query
-          description: start of a period
-          required: true
-          schema:
-            type: string
-            format: dateTime
-          example: "2017-01-01"
-        - name: to
-          in: query
-          description: end of a period
-          required: true
-          schema:
-            type: string
-            format: dateTime
-          example: "2017-01-01"
-        - name: rows
-          in: query
-          description: number of rows
-          required: true
-          schema:
-            type: integer
-          example: 100
-        - name: page
-          in: query
-          description: number of page
-          required: true
-          schema:
-            type: integer
-          example: 1
-        - name: Authorization
-          in: header
-          description: authorization token
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/fromParam'
+        - $ref: '#/components/parameters/toParam'
+        - $ref: '#/components/parameters/rowsParam'
+        - $ref: '#/components/parameters/pageParam'
       responses:
         '200':
           description: Correct response
@@ -176,42 +112,10 @@ paths:
       summary: Leads registration.
       description: Returns information on Leads' registration.
       parameters:
-        - name: from
-          in: query
-          description: start of a period
-          required: true
-          schema:
-            type: string
-            format: dateTime
-          example: "2017-01-01"
-        - name: to
-          in: query
-          description: end of a period
-          required: true
-          schema:
-            type: string
-            format: dateTime
-          example: "2017-01-01"
-        - name: rows
-          in: query
-          description: number of rows
-          required: true
-          schema:
-            type: integer
-          example: 100
-        - name: page
-          in: query
-          description: number of page
-          required: true
-          schema:
-            type: integer
-          example: 1
-        - name: Authorization
-          in: header
-          description: authorization token
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/fromParam'
+        - $ref: '#/components/parameters/toParam'
+        - $ref: '#/components/parameters/rowsParam'
+        - $ref: '#/components/parameters/pageParam'
       responses:
         '200':
           description: Correct response
@@ -276,3 +180,46 @@ paths:
                   mtmGroupName: xxx-xxx-xxx
                   leadSourceType: LeadSource1
                   partnerName: Partner1
+components:
+  parameters:
+    fromParam:
+      in: query
+      name: from
+      description: start of a period
+      required: true
+      schema:
+        type: string
+        format: dateTime
+      example: 2017.01.01
+    toParam:
+      in: query
+      name: to
+      description: end of a period
+      required: true
+      schema:
+        type: string
+        format: dateTime
+      example: 2017.01.01
+    rowsParam:
+      in: query
+      name: rows
+      description: number of rows in a page
+      required: true
+      schema:
+        type: integer
+      example: 100
+    pageParam:
+      in: query
+      name: page
+      description: page number
+      required: true
+      schema:
+        type: integer
+      example: 1
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+security:
+  - ApiKeyAuth: []
