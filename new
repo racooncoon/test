@@ -46,7 +46,6 @@ paths:
           required: true
           schema:
             type: string
-          example: ZjY4YjJlOTI4ZjQ2NDc5Yjg4YzU2MWZhZWFjODQ5Y2Y6M09EcmNRYXdBdDlVeVRPVGl5REc3dHVO
       responses:
         '200':
           description: Correct response
