@@ -12,7 +12,7 @@ paths:
         Returns the list of parameters and it's properties, required to create
         Lead.
 
-        Request sends to CRM system URL followed by /api/lead.
+        Request sends to CRM system URL followed by <b> /api/lead.
       responses:
         '200':
           description: Correct response
@@ -96,10 +96,15 @@ paths:
     post:
       summary: Create Lead in CRM.
       description: > 
-        Allows to create Leads with a POST-request to CRM system URL followed by /api/v2/lead.
+        Allows to create Leads with a POST-request to CRM system URL followed by <b> /api/v2/lead.
       operationId: addLead
       requestBody:
-        description: Lead info
+        description: |
+            Lead info in the form:
+
+            <b>  "parameter": "value"</b>.
+              
+            Any other parameter will be saved in <b>meta</b> field.
         required: true
         content:
           application/json:
@@ -167,7 +172,7 @@ paths:
   /api/check-email:
     post:
       summary: Check the availability of email.
-      description: Sends POST-request to CRM system URL followed by /api/check-email.
+      description: Sends POST-request to CRM system URL followed by <b> /api/check-email.
       requestBody:
         content:
           application/json:
@@ -185,7 +190,7 @@ paths:
   /api/check-phone:
     post:
       summary: Check the availability of phone number.
-      description: Sends POST-request to CRM system URL followed by /api/check-phone.
+      description: Sends POST-request to CRM system URL followed by <b> /api/check-phone.
       requestBody:
         required: true
         content:
@@ -229,7 +234,7 @@ components:
           type: string
         email:
           type: string
-        promo-code:
+        promo_code:
           type: string
         token:
           type: string
@@ -240,10 +245,11 @@ components:
         autofix_phone:
           type: boolean
       example:
-        phone_number: +11111111111
+        phone_number: "+11111111111"
         language: English
         first_name: John
         last_name: Smith
         country: United States
         address: Main st.1
         email: johnsmith@example.com
+        promo_code: "111"
