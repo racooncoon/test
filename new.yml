@@ -190,7 +190,7 @@ components:
       schema:
         type: string
         format: dateTime
-      example: 2017.01.01
+      example: "2017-01-01"
     toParam:
       in: query
       name: to
@@ -199,7 +199,7 @@ components:
       schema:
         type: string
         format: dateTime
-      example: 2017.01.01
+      example: "2017-01-01"
     rowsParam:
       in: query
       name: rows
