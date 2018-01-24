@@ -17,6 +17,7 @@ paths:
           schema:
             type: string
             format: date-time
+          example: 2017.01.01
         - name: to
           in: path
           description: end of a period
@@ -24,24 +25,28 @@ paths:
           schema:
             type: string
             format: date-time
+          example: 2017.01.01
         - name: rows
           in: path
           description: number of rows
           required: true
           schema:
             type: integer
+          example: 100
         - name: page
           in: path
           description: number of page
           required: true
           schema:
             type: integer
+          example: 1
         - name: Authorization
           in: header
           description: authorization token
           required: true
           schema:
             type: string
+          example: ZjY4YjJlOTI4ZjQ2NDc5Yjg4YzU2MWZhZWFjODQ5Y2Y6M09EcmNRYXdBdDlVeVRPVGl5REc3dHVO
       responses:
         '200':
           description: Correct response
