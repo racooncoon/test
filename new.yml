@@ -49,9 +49,9 @@ paths:
                   rdate: 2017.01.01 01:01:01
                   traderID: 1111111111
                   tranzID: 1
-                  type: deposits
+                  type: deposit
                   amount: 1000
-                  currency: USD
+                  currency: usd
                   status: approval
                   crmLeadId: 111111
   /api/affiliatets/stats:
@@ -99,11 +99,11 @@ paths:
                     description: ID of a Lead in CRM system
                 example:
                   rdate: 2017.01.01 01:01:01
-                  traderID: 1111111111
+                  traderID: 11111111111
                   tranzID: 1
-                  type: deposits
+                  type: pnl
                   amount: 1000
-                  currency: USD
+                  currency: usd
                   status: approval
                   usdAmount: 1000
                   crmLeadId: 111111
