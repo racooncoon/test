@@ -149,7 +149,7 @@ paths:
                     description: Lead's status
                   leadSource:
                     type: string
-                    description: method Lead was created with (integration/manual/import/backoffice)
+                    description: method Lead was created with (integration, manual, import, backoffice)
                   lastLoginDate:
                     type: string
                     description: date of Lead's last login
