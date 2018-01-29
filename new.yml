@@ -135,6 +135,9 @@ paths:
                   traderID:
                     type: integer
                     description: ID of trading account in trading platform
+                  email:
+                    type: string
+                    description: Lead's email
                   status:
                     type: string
                     description: if the registration considered as an active (real account) or demo
@@ -143,7 +146,7 @@ paths:
                     description: Lead's country (ISO code 2 characters)
                   leadStatus:
                     type: string
-                    description: Lead status
+                    description: Lead's status
                   leadSource:
                     type: string
                     description: method Lead was created with (integration/manual/import/backoffice)
@@ -165,6 +168,9 @@ paths:
                   partnerName:
                     type: string
                     description: Partner's name in CRM system
+                  meta:
+                    type: string
+                    description: additional data sent with registration request
                 example:
                   action: lead
                   btag: 14b5cf95-52cb
@@ -180,6 +186,7 @@ paths:
                   mtmGroupName: xxx-xxx-xxx
                   leadSourceType: LeadSource1
                   partnerName: Partner1
+                  meta: 
 components:
   parameters:
     fromParam:
