@@ -59,64 +59,110 @@ paths:
           content:
             application/json:
               schema:
-                properties:
+                type: object
+                properties: 
                   action:
                     type: string
                     description: type of profile #(always Lead)
-                  btag:
-                    type: string
-                    description: will be provided by Affiliate Tracking Software as query string on the landing pages and site pages
-                  rdate:
-                    type: string
-                    description: date of registration
-                  traderID:
-                    type: string
-                    description: ID of trading account in trading platform
                   status:
                     type: string
                     description: if the registration considered as an active (real account) or demo
-                  country: 
+                  rdate:
                     type: string
-                    description: Lead's country (ISO code 2 characters)
-                  leadStatus:
-                    type: string
-                    description: Lead status
-                  leadSource:
-                    type: string
-                    description: method Lead was created with (integration/manual/import/backoffice)
+                    description: date of registration
                   lastLoginDate:
                     type: string
                     description: date of Lead's last login
+                  leadStatus:
+                    type: string
+                    description: Lead status
+                  country: 
+                    type: string
+                    description: Lead's country (ISO code 2 characters)
                   promoCode:
                     type: string
-                    description: promo-code
+                    description: Lead's promo
                   crmLeadId:
                     type: string
                     description: ID of Lead in CRM system
-                  mtmGroupName: 
+                  leadSource:
                     type: string
-                    description: Partner's goup name in MetaTrader4
+                    description: method Lead was created with (integration/manual/import/backoffice)
                   leadSourceType:
                     type: string
                     description: name of Lead Source
+                  mtmGroupName: 
+                    type: string
+                    description: Partner's goup name in MetaTrader4
                   partnerName:
                     type: string
                     description: Partner's name in CRM system
+                  email:
+                    type: string
+                    description: Lead's email
+                  firstName:
+                    type: string
+                    description: Lead's first name
+                  lastName: 
+                    type: string
+                    description: Lead's surname
+                  countyCode:
+                    type: string
+                    description: Lead's country (ISO code 2 characters)
+                  balance:
+                    type: string
+                    description: Lead's current balance
+                  tradingAccounts:
+                    description: list of Lead's tranding accounts
+                    type: array
+                    items: 
+                      type: object
+                      properties:
+                        login:
+                          type: string
+                          description: ID of trading account in trading platform
+                        currency: 
+                          type: string
+                          description: currency of account
+                  ftdDate:
+                    type: string
+                    description: date of the first trading deposit
+                  transactions:
+                    type: array
+                    items: 
+                      $ref: '#/components/schemas/trans'
                 example:
-                  action: lead
-                  btag: 14b5cf95-52cb
-                  rdate: 2017.01.01 01:01:01
-                  traderID: 1111111111
-                  status: lead
-                  country: RU
-                  leadStatus: hot
-                  leadSource: integration
-                  lastLoginDate: 2017.01.01 01:11:01
-                  promoCode: 111
-                  crmLeadId: 11111
-                  mtmGroupName: xxx-xxx-xxx
-                  leadSourceType: LeadSource1
-                  partnerName: Partner1
+                            action: "lead"
+                            status: "lead"
+                            rdate: "2017-12-28 00:00:01"
+                            lastLoginDate: "2018-01-01 00:00:00"
+                            leadStatus: "new"
+                            country: Russia
+                            promoCode: "111"
+                            crmLeadId: "111111"
+                            leadSource: integration
+                            leadSourceType: "Source1"
+                            mtmGroupName: "xxx-xxx-xxx"
+                            partnerName: "Partner1"
+                            email: "example@example.com"
+                            firstName: "John"
+                            lastName: "Smith"
+                            countryCode: "RU"
+                            currency: "USD"
+                            balance: "1000"
+                            tradingAccounts: 
+                              login: "1111111111"
+                              currency: "USD"
+                            ftdDate: "2018-01-31 13:30:52"
+                            transactions: 
+                              rdate: "2018-01-31 13:30:52"
+                              traderID: "1111111111"
+                              tranzID: "1111111"
+                              type: "deposits"
+                              amount: "1000"
+                              currency: "USD"
+                              status: "approval"
+                              crmLeadId: "111111"
         '404':
           description: CRM Lead ID not found
           content:
@@ -319,7 +365,7 @@ components:
         tranzID: "1"
         type: pnl
         amount: "1000"
-        currency: usd
+        currency: USD
         status: approval
         usdAmount: "1000"
         crmLeadId: "111111"
@@ -356,7 +402,7 @@ components:
         tranzID: "1"
         type: deposit
         amount: "1000"
-        currency: usd
+        currency: USD
         status: approval
         crmLeadId: "111111"
 security:
