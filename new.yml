@@ -18,7 +18,7 @@ paths:
         - in: query
           name: id
           schema:
-            type: string
+            type: integer
           required: true
           description: CRM Lead ID
       responses:
@@ -50,7 +50,7 @@ paths:
         - in: query
           name: id
           schema:
-            type: string
+            type: integer
           required: true
           description: CRM Lead ID
       responses:
