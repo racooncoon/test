@@ -18,7 +18,7 @@ paths:
         - in: query
           name: id
           schema:
-            type: integer
+            type: string
           required: true
           description: CRM Lead ID
       responses:
@@ -50,7 +50,7 @@ paths:
         - in: query
           name: id
           schema:
-            type: integer
+            type: string
           required: true
           description: CRM Lead ID
       responses:
@@ -70,7 +70,7 @@ paths:
                     type: string
                     description: date of registration
                   traderID:
-                    type: integer
+                    type: string
                     description: ID of trading account in trading platform
                   status:
                     type: string
@@ -88,10 +88,10 @@ paths:
                     type: string
                     description: date of Lead's last login
                   promoCode:
-                    type: integer
+                    type: string
                     description: promo-code
                   crmLeadId:
-                    type: integer
+                    type: string
                     description: ID of Lead in CRM system
                   mtmGroupName: 
                     type: string
@@ -148,16 +148,16 @@ paths:
                     type: string
                     description: date of transaction
                   traderID:
-                    type: integer
+                    type: string
                     description: ID of trading account in trading platform
                   tranzID:
-                    type: integer
+                    type: string
                     description: ID of transaction in trading platform
                   type:
                     type: string
                     description: type of transaction (deposit/withdrawal)
                   amount:
-                    type: integer
+                    type: string
                     description: amount of transaction
                   currency:
                     type: string
@@ -166,17 +166,17 @@ paths:
                     type: string
                     description: status of transaction
                   crmLeadId:
-                    type: integer
+                    type: string
                     description: ID of a Lead in CRM system
                 example:
-                  rdate: 2017.01.01 01:01:01
-                  traderID: 1111111111
-                  tranzID: 1
+                  rdate: "2017-01-01 01:01:01"
+                  traderID: "1111111111"
+                  tranzID: "1"
                   type: deposit
-                  amount: 1000
+                  amount: "1000"
                   currency: usd
                   status: approval
-                  crmLeadId: 111111
+                  crmLeadId: "111111"
   /api/affiliatets/stats:
     get:
       summary: Trading transactions.
@@ -198,16 +198,16 @@ paths:
                     type: string
                     description: date of transaction
                   traderID:
-                    type: integer
+                    type: string
                     description: ID of trading account in trading platform
                   tranzID:
-                    type: integer
+                    type: string
                     description: ID of transaction in trading platform
                   type:
                     type: string
                     description: type of transaction (deposit/withdrawal)
                   amount:
-                    type: integer
+                    type: string
                     description: amount of transaction
                   currency:
                     type: string
@@ -216,21 +216,21 @@ paths:
                     type: string
                     description: status of transaction
                   usdAmount: 
-                    type: integer
+                    type: string
                     description: amount of transaction in USD currency
                   crmLeadId:
-                    type: integer
+                    type: string
                     description: ID of a Lead in CRM system
                 example:
-                  rdate: 2017.01.01 01:01:01
-                  traderID: 11111111111
-                  tranzID: 1
+                  rdate: "2017-01-01 01:01:01"
+                  traderID: "11111111111"
+                  tranzID: "1"
                   type: pnl
-                  amount: 1000
+                  amount: "1000"
                   currency: usd
                   status: approval
-                  usdAmount: 1000
-                  crmLeadId: 111111
+                  usdAmount: "1000"
+                  crmLeadId: "111111"
   /api/affiliatets/registration:
     get:
       summary: Leads registration.
@@ -251,60 +251,60 @@ paths:
                   action:
                     type: string
                     description: type of profile #(always Lead)
-                  btag:
+                  status:
                     type: string
-                    description: will be provided by Affiliate Tracking Software as query string on the landing pages and site pages
+                    description: if the registration considered as an active (real account) or demo
                   rdate:
                     type: string
                     description: date of registration
                   traderID:
-                    type: integer
+                    type: string
                     description: ID of trading account in trading platform
-                  status:
-                    type: string
-                    description: if the registration considered as an active (real account) or demo
-                  country: 
-                    type: string
-                    description: Lead's country (ISO code 2 characters)
-                  leadStatus:
-                    type: string
-                    description: Lead status
-                  leadSource:
-                    type: string
-                    description: method Lead was created with (integration/manual/import/backoffice)
                   lastLoginDate:
                     type: string
                     description: date of Lead's last login
-                  promoCode:
-                    type: integer
-                    description: promo-code
-                  crmLeadId:
-                    type: integer
-                    description: ID of Lead in CRM system
-                  mtmGroupName: 
+                  leadStatus:
                     type: string
-                    description: Partner's goup name in MetaTrader4
+                    description: Lead status
+                  country: 
+                    type: string
+                    description: Lead's country (ISO code 2 characters)
+                  promoCode:
+                    type: string
+                    description: Lead's promo
+                  crmLeadId:
+                    type: string
+                    description: ID of Lead in CRM system
+                  leadSource:
+                    type: string
+                    description: method Lead was created with (integration/manual/import/backoffice)
                   leadSourceType:
                     type: string
                     description: name of Lead Source
+                  mtmGroupName: 
+                    type: string
+                    description: Partner's goup name in MetaTrader4
                   partnerName:
                     type: string
                     description: Partner's name in CRM system
+                  email:
+                    type: string
+                    description: Lead's email
                 example:
                   action: lead
-                  btag: 14b5cf95-52cb
-                  rdate: 2017.01.01 01:01:01
-                  traderID: 1111111111
                   status: lead
-                  country: RU
+                  rdate: "2017-01-01 01:01:01"
+                  traderID: "1111111111"
+                  lastLoginDate: "2017-01-01 01:11:01"
                   leadStatus: hot
+                  country: RU
+                  promoCode: "111"
+                  crmLeadId: "11111"
                   leadSource: integration
-                  lastLoginDate: 2017.01.01 01:11:01
-                  promoCode: 111
-                  crmLeadId: 11111
-                  mtmGroupName: xxx-xxx-xxx
                   leadSourceType: LeadSource1
+                  mtmGroupName: xxx-xxx-xxx
                   partnerName: Partner1
+                  email: example@example.com
 components:
   parameters:
     fromParam:
