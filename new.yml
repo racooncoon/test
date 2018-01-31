@@ -115,8 +115,7 @@ paths:
                   tradingAccounts:
                     description: list of Lead's tranding accounts
                     type: array
-                    items: 
-                      type: object
+                    items:
                       properties:
                         login:
                           type: string
@@ -132,37 +131,37 @@ paths:
                     items: 
                       $ref: '#/components/schemas/trans'
                 example:
-                            action: "lead"
-                            status: "lead"
-                            rdate: "2017-12-28 00:00:01"
-                            lastLoginDate: "2018-01-01 00:00:00"
-                            leadStatus: "new"
-                            country: Russia
-                            promoCode: "111"
-                            crmLeadId: "111111"
-                            leadSource: integration
-                            leadSourceType: "Source1"
-                            mtmGroupName: "xxx-xxx-xxx"
-                            partnerName: "Partner1"
-                            email: "example@example.com"
-                            firstName: "John"
-                            lastName: "Smith"
-                            countryCode: "RU"
-                            currency: "USD"
-                            balance: "1000"
-                            tradingAccounts: 
-                              login: "1111111111"
-                              currency: "USD"
-                            ftdDate: "2018-01-31 13:30:52"
-                            transactions: 
-                              rdate: "2018-01-31 13:30:52"
-                              traderID: "1111111111"
-                              tranzID: "1111111"
-                              type: "deposits"
-                              amount: "1000"
-                              currency: "USD"
-                              status: "approval"
-                              crmLeadId: "111111"
+                  action: "lead"
+                  status: "lead"
+                  rdate: "2017-12-28 00:00:01"
+                  lastLoginDate: "2018-01-01 00:00:00"
+                  leadStatus: "new"
+                  country: Russia
+                  promoCode: "111"
+                  crmLeadId: "111111"
+                  leadSource: integration
+                  leadSourceType: "Source1"
+                  mtmGroupName: "xxx-xxx-xxx"
+                  partnerName: "Partner1"
+                  email: "example@example.com"
+                  firstName: "John"
+                  lastName: "Smith"
+                  countryCode: "RU"
+                  currency: "USD"
+                  balance: "1000"
+                  tradingAccounts:
+                    login: "1111111111"
+                    currency: USD
+                  ftdDate: "2018-01-31 13:30:52"
+                  transactions:
+                    rdate: "2018-01-31 13:30:52"
+                    traderID: "1111111111"
+                    tranzID: "1111111"
+                    type: "deposits"
+                    amount: "1000"
+                    currency: "USD"
+                    status: "approval"
+                    crmLeadId: "111111"
         '404':
           description: CRM Lead ID not found
           content:
