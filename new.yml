@@ -2,11 +2,6 @@ openapi: 3.0.1
 info:
   title: Clients
   version: 1.0.0
-servers:
-  - url: 'https://secure.forexgrand.com'
-  - url: 'https://secure.fxgtrade.com'
-  - url: 'https://secure.fxginvest.com'
-  - url: 'https://secure.wercrypto.com'
 paths:
   /api/affiliatets/autologin:
     get:
