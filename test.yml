@@ -102,9 +102,7 @@ paths:
         description: |
             Lead info in the form:
 
-            <b>  "parameter": "value"</b>.
-              
-            Any other parameter will be saved in <b>meta</b> field.
+            <b>  "parameter"</b>: <b>"value"</b>.
         required: true
         content:
           application/json:
