@@ -169,7 +169,25 @@ paths:
                   message: client not found
   /api/affiliatets/transactions:
     get:
-      summary: Deposits and withdrawals.
+      summary: Deposits and withdrawals. Data of all Partners.
+      description: Returns information on deposits and withdrawals transactions.
+      parameters:
+        - $ref: '#/components/parameters/fromParam'
+        - $ref: '#/components/parameters/toParam'
+        - $ref: '#/components/parameters/rowsParam'
+        - $ref: '#/components/parameters/pageParam'
+      responses:
+        '200':
+          description: Correct response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/trans'
+  /api/affiliate/v2/transactions:
+    get:
+      summary: Deposits and withdrawals. Data of specific Partner (defined by token).
       description: Returns information on deposits and withdrawals transactions.
       parameters:
         - $ref: '#/components/parameters/fromParam'
@@ -187,7 +205,25 @@ paths:
                   $ref: '#/components/schemas/trans'
   /api/affiliatets/stats:
     get:
-      summary: Trading transactions.
+      summary: Trading transactions. Data of all Partners.
+      description: Returns information on trading transactions.
+      parameters:
+        - $ref: '#/components/parameters/fromParam'
+        - $ref: '#/components/parameters/toParam'
+        - $ref: '#/components/parameters/rowsParam'
+        - $ref: '#/components/parameters/pageParam'
+      responses:
+        '200':
+          description: Correct response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/stats'
+  /api/affiliate/v2/stats:
+    get:
+      summary: Trading transactions. Data of specific Partner (defined by token).
       description: Returns information on trading transactions.
       parameters:
         - $ref: '#/components/parameters/fromParam'
@@ -205,7 +241,25 @@ paths:
                   $ref: '#/components/schemas/stats'
   /api/affiliatets/registration:
     get:
-      summary: Leads registration.
+      summary: Leads registration. Data of all Partners.
+      description: Returns information on Leads' registration.
+      parameters:
+        - $ref: '#/components/parameters/fromParam'
+        - $ref: '#/components/parameters/toParam'
+        - $ref: '#/components/parameters/rowsParam'
+        - $ref: '#/components/parameters/pageParam'
+      responses:
+        '200':
+          description: Correct response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/regs'
+  /api/affiliate/v2/registrations:
+    get:
+      summary: Leads registration. Data of specific Partner (defined by token).
       description: Returns information on Leads' registration.
       parameters:
         - $ref: '#/components/parameters/fromParam'
@@ -262,6 +316,7 @@ components:
       type: apiKey
       in: header
       name: Authorization
+      description: "To receive the token, go to: <b>SETTINGS</b> > <b>Api token</b> and press <b>GENERATE TOKEN</b>."
   schemas:
     regs:
       type: object
