@@ -185,7 +185,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/trans'
-  /api/affiliate/v2/transactions:
+  /api/v2/affiliate/transactions:
     get:
       summary: Deposits and withdrawals. Data of specific Partner (defined by token).
       description: Returns information on deposits and withdrawals transactions.
@@ -221,7 +221,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/stats'
-  /api/affiliate/v2/stats:
+  /api/v2/affiliate/stats:
     get:
       summary: Trading transactions. Data of specific Partner (defined by token).
       description: Returns information on trading transactions.
@@ -257,7 +257,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/regs'
-  /api/affiliate/v2/registrations:
+  /api/v2/affiliate/registrations:
     get:
       summary: Leads registration. Data of specific Partner (defined by token).
       description: Returns information on Leads' registration.
