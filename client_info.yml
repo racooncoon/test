@@ -187,7 +187,7 @@ paths:
                   $ref: '#/components/schemas/trans'
   /api/v2/affiliate/transactions:
     get:
-      summary: Deposits and withdrawals. Data of specific Partner (defined by token).
+      summary: Deposits and withdrawals. Data of specific Partner or promo-code (defined by token).
       description: Returns information on deposits and withdrawals transactions.
       parameters:
         - $ref: '#/components/parameters/fromParam'
@@ -223,7 +223,7 @@ paths:
                   $ref: '#/components/schemas/stats'
   /api/v2/affiliate/stats:
     get:
-      summary: Trading transactions. Data of specific Partner (defined by token).
+      summary: Trading transactions. Data of specific Partner or promo-code (defined by token).
       description: Returns information on trading transactions.
       parameters:
         - $ref: '#/components/parameters/fromParam'
@@ -259,7 +259,7 @@ paths:
                   $ref: '#/components/schemas/regs'
   /api/v2/affiliate/registrations:
     get:
-      summary: Leads registration. Data of specific Partner (defined by token).
+      summary: Leads registration. Data of specific Partner or promo-code (defined by token).
       description: Returns information on Leads' registration.
       parameters:
         - $ref: '#/components/parameters/fromParam'
