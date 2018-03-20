@@ -154,6 +154,11 @@ paths:
 
                       CRM system is not initialized
                       - "Broker not set"
+                      
+                      Duplicate Lead registration
+                      - "This Lead already exist for this Lead Source"
+                      - "This Lead already exist for different Lead Source"
+                      - "This Lead has been already created without Lead Source"
                   leadId:
                     type: string
                     description: Identificator of Lead in CRM
