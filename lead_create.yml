@@ -228,6 +228,7 @@ components:
           type: string
         country:
           type: string
+          format: ISO 3166-1 alpha-2; ISO 3166-1 alpha-3; full name of a country. Check the list of available countries with /api/lead.
         address:
           type: string
         email:
@@ -247,7 +248,7 @@ components:
         language: English
         first_name: John
         last_name: Smith
-        country: United States
+        country: US
         address: Main st.1
         email: johnsmith@example.com
         promo_code: "111"
