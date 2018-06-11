@@ -3,7 +3,7 @@ info:
   title: Leads
   version: 1.0.0
 paths:
-  /api/lead:
+  /api/lead?promo:
     get:
       summary: Allowed parameters.
       description: |
@@ -11,6 +11,13 @@ paths:
         Lead.
 
         Request sends to CRM system URL followed by <b> /api/lead.
+      parameters:
+      - in: query
+        name: promo
+        schema:
+          type: integer
+        required: false
+        description: Specific promo for which countries and languages are shown. In case no promo is found default values are shown.
       responses:
         '200':
           description: Correct response
@@ -93,16 +100,14 @@ paths:
   /api/v2/lead:
     post:
       summary: Create Lead in CRM.
-      description: > 
+      description: >
         Allows to create Leads with a POST-request to CRM system URL followed by <b> /api/v2/lead.
       operationId: addLead
       requestBody:
         description: |
             Lead info in the form:
 
-            <b>  "parameter": "value"</b>.
-              
-            Any other parameter will be saved in <b>meta</b> field.
+            <b>  "parameter"</b>: <b>"value"</b>.
         required: true
         content:
           application/json:
@@ -131,10 +136,10 @@ paths:
 
                       Specified token not found
                       - "Token is invalid"
-                      
+
                       Integration is disabled for the Lead Source.
-                      - "Integration disabled" 
-                      
+                      - "Integration disabled"
+
                       Required field(s) are missing.
                       - "Missing fields: {missing_field, ...}"
 
@@ -156,6 +161,11 @@ paths:
 
                       CRM system is not initialized
                       - "Broker not set"
+
+                      Duplicate Lead registration
+                      - "This Lead already exist for this Lead Source"
+                      - "This Lead already exist for different Lead Source"
+                      - "This Lead has been already created without Lead Source"
                   leadId:
                     type: string
                     description: Identificator of Lead in CRM
@@ -180,7 +190,7 @@ paths:
                   type: string
       responses:
         '200':
-          description: Correct response. "True" - Email is already taken. "False" - Email is available. 
+          description: Correct response. "True" - Email is already taken. "False" - Email is available.
           content:
             application/json:
               schema:
@@ -199,7 +209,7 @@ paths:
                   type: string
       responses:
         '200':
-          description: Correct response. "True" - Phone number is already taken. "False" - Phone number is available. 
+          description: Correct response. "True" - Phone number is already taken. "False" - Phone number is available.
           content:
             application/json:
               schema:
@@ -228,7 +238,6 @@ components:
           type: string
         country:
           type: string
-          format: ISO 3166-1 alpha-2; ISO 3166-1 alpha-3; full name of a country. Check the list of available countries with /api/lead.
         address:
           type: string
         email:
@@ -248,7 +257,7 @@ components:
         language: English
         first_name: John
         last_name: Smith
-        country: US
+        country: United States
         address: Main st.1
         email: johnsmith@example.com
         promo_code: "111"
