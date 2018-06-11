@@ -3,7 +3,7 @@ info:
   title: Leads
   version: 1.0.0
 paths:
-  /api/lead?promo:
+  /api/lead:
     get:
       summary: Allowed parameters.
       description: |
@@ -11,15 +11,6 @@ paths:
         Lead.
 
         Request sends to CRM system URL followed by <b> /api/lead.
-      parameters:
-        - in: query
-          name: promo
-          schema:
-            type: integer
-          required: false
-          description: >-
-            Specific promo for which countries and languages are shown. In case
-            no promo is found default values are shown.
       responses:
         '200':
           description: Correct response
@@ -102,15 +93,16 @@ paths:
   /api/v2/lead:
     post:
       summary: Create Lead in CRM.
-      description: >
-        Allows to create Leads with a POST-request to CRM system URL followed by
-        <b> /api/v2/lead.
+      description: > 
+        Allows to create Leads with a POST-request to CRM system URL followed by <b> /api/v2/lead.
       operationId: addLead
       requestBody:
         description: |
-          Lead info in the form:
+            Lead info in the form:
 
-          <b>  "parameter"</b>: <b>"value"</b>.
+            <b>  "parameter": "value"</b>.
+              
+            Any other parameter will be saved in <b>meta</b> field.
         required: true
         content:
           application/json:
@@ -128,78 +120,42 @@ paths:
                 properties:
                   message:
                     type: string
-                    description: >
+                    description: |
                       Result:
 
-
                       Success, lead was created
-
                       - "OK"
 
-
                       Request body contains non-UFT-8 characters
-
                       - "Request body must contain UFT-8 characters only"
 
-
                       Specified token not found
-
                       - "Token is invalid"
-
-
+                      
                       Integration is disabled for the Lead Source.
-
-                      - "Integration disabled"
-
-
+                      - "Integration disabled" 
+                      
                       Required field(s) are missing.
-
                       - "Missing fields: {missing_field, ...}"
 
-
                       Required parameter is null.
-
                       - "{null_parameter} cannot be blank"
 
-
                       Phone validation errors when autofix_phone = true:
-
                       - "Error type: The string supplied was too long to parse"
-
                       - "Error type: The phone number supplied was null"
-
-                      - "Error type: The string supplied did not seem to be a
-                      phone number"
-
-                      - "Error type: Could not interpret numbers after
-                      plus-sign"
-
-                      - "Error type: The string supplied is too short to be a
-                      phone number"
-
-                      - "Error type: The string supplied is too long to be a
-                      phone number"
-
-                      - "Error type: Phone number had an IDD, but after this was
-                      not long enough to be a viable phone number"
-
-                      - "Error type: Country calling code supplied was not
-                      recognized"
-
+                      - "Error type: The string supplied did not seem to be a phone number"
+                      - "Error type: Could not interpret numbers after plus-sign"
+                      - "Error type: The string supplied is too short to be a phone number"
+                      - "Error type: The string supplied is too long to be a phone number"
+                      - "Error type: Phone number had an IDD, but after this was not long enough to be a viable phone number"
+                      - "Error type: Country calling code supplied was not recognized"
 
                       Lead Source containing provided token was deleted
-
                       - "Incorrect source"
 
-
                       CRM system is not initialized
-
                       - "Broker not set"
-                      
-                      Duplicate Lead registration
-                      - "This Lead already exist for this Lead Source"
-                      - "This Lead already exist for different Lead Source"
-                      - "This Lead has been already created without Lead Source"
                   leadId:
                     type: string
                     description: Identificator of Lead in CRM
@@ -210,8 +166,7 @@ paths:
                   message:
                     Message: OK
                   leadId: 37769
-                  autoLoginLink: >-
-                    https://dev02.bo.avrath.net/Account/TokenLogin?code=3fda080ae93840f68aa4055e3fc7b8ac434da51d64e0458390394766c1855235
+                  autoLoginLink: https://dev02.bo.avrath.net/Account/TokenLogin?code=3fda080ae93840f68aa4055e3fc7b8ac434da51d64e0458390394766c1855235
   /api/check-email:
     post:
       summary: Check the availability of email.
@@ -225,9 +180,7 @@ paths:
                   type: string
       responses:
         '200':
-          description: >-
-            Correct response. "True" - Email is already taken. "False" - Email
-            is available.
+          description: Correct response. "True" - Email is already taken. "False" - Email is available. 
           content:
             application/json:
               schema:
@@ -246,9 +199,7 @@ paths:
                   type: string
       responses:
         '200':
-          description: >-
-            Correct response. "True" - Phone number is already taken. "False" -
-            Phone number is available.
+          description: Correct response. "True" - Phone number is already taken. "False" - Phone number is available. 
           content:
             application/json:
               schema:
@@ -292,11 +243,11 @@ components:
         autofix_phone:
           type: boolean
       example:
-        phone_number: '+11111111111'
+        phone_number: "+11111111111"
         language: English
         first_name: John
         last_name: Smith
         country: United States
         address: Main st.1
         email: johnsmith@example.com
-        promo_code: '111'
+        promo_code: "111"
